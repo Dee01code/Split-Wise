@@ -1,0 +1,42 @@
+<h1>Expenses#new</h1>
+<p>Find me in app/views/expenses/new.html.erb</p>
+
+
+<%= form_with model: @expense do |expense_form| %>
+<div> 
+	<%= expense_form.label :description, "Description"%>
+	<%= expense_form.text_field :description %>
+</div>
+
+<div> 
+	<%= expense_form.label :amount, "Enter Amount" %>
+	<%= expense_form.text_field :amount%>
+</div>
+
+
+
+<div> 
+	<h4> Distribution Type </h4>
+	<%= expense_form.radio_button :expense_type, "Equal"%>
+	<%= expense_form.label :expense_type_equal, "Equal Distribution"%> <br>
+	<%= expense_form.radio_button :expense_type, "Unequal"%>
+	<%= expense_form.label :expense_type_unequal, "Unequal Distribution"%><br>
+	<%= expense_form.radio_button :expense_type, "Percentage"%>
+	<%= expense_form.label :expense_type_percentange, "Percentage Distribution"%>
+</div>
+
+
+<div>
+  <h4>Split Among:</h4>
+  <%= expense_form.collection_check_boxes :user_ids, User.order(:name), :id, :name do |b| %>
+    <%= b.check_box + b.label %><br>
+  <% end %>
+</div>
+
+
+<div>
+	<br>
+  <%= expense_form.submit "Add Expense"%>
+</div>
+
+<%end %>

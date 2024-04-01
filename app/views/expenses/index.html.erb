@@ -1,0 +1,11 @@
+<h1>Welcome to DS SplitWise</h1>
+<p>Find me in app/views/expenses/index.html.erb</p>
+
+<ul>
+    <% @expenses.each do |expense| %>
+        <li><%= link_to expense.description, expense_path(expense) %></li>
+    <% end %>
+
+</ul>
+<%= button_to "Add Expense", new_expense_path, method: :get %>
+

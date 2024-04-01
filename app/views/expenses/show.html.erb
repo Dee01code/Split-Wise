@@ -1,0 +1,44 @@
+<table>
+	<tr>
+		<td>
+			Description:
+		</td>
+		<td>
+			<%= @expense.description %>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			Amount:
+		</td>
+		<td>
+			<%= @expense.amount %>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			Expense Type:
+		</td>
+		<td>
+			<%= @expense.expense_type %>
+		</td>
+	</tr>
+	
+	<tr>
+		<td>
+			Split Between:
+		</td>
+		<td>
+			<ol>
+				<% @expense.users.each do |user| %>
+          <li>
+            <%= user.name%>
+          </li>
+        <% end %>
+			</ol>
+		</td>
+	</tr>
+
+</table>
