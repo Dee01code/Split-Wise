@@ -1,5 +1,12 @@
 class ExpensesController < ApplicationController
-  before_action :popup_display,only: [:create]
+  # before_action :popup_display,only: [:create]
+  #before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :third_filter
+  before_action :first_filter, except: [:create]
+  before_action :second_filter, only: [:new, :create, :index]
+
+  # GET /expenses
+  # GET /expenses.json
   def index
     @expenses = Expense.all
   end
@@ -9,7 +16,7 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    binding.break
+    # binding.break
     @expense = Expense.new(expense_params)
     if @expense.save
 
@@ -27,7 +34,10 @@ class ExpensesController < ApplicationController
         # @expense.errors.full_messages.each do |message|
         #   flash[:alert] = message
         # end
-        flash.now[:alert] = @expense.errors.full_messages.join(', ')
+      @expense.errors.full_messages.each do |message|
+        puts message
+      end
+      flash.now[:alert] = @expense.errors.full_messages.join(', ')
       render :new, status: :unprocessable_entity
     end
   end
@@ -42,10 +52,23 @@ class ExpensesController < ApplicationController
   
   private
   def expense_params
-    params.require(:expense).permit(:description, :amount, :expense_type)
+    # binding.break
+    params.require(:expense).permit(:description, :amount, :expense_type)  
   end
-  def popup_display
-    flash[:alert] =  "Commiting the expense"
+
+  def first_filter
+    puts "Calling from first filter"
+    Rails.logger.info "Calling from first filter"
+  end
+
+  def second_filter
+    puts "Calling from second filter"
+    Rails.logger.info "Calling from Second filter"
+  end
+
+  def third_filter
+    puts "Calling from Third filter"
+    Rails.logger.info "Calling from third filter"
   end
 
 end

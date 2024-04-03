@@ -1,0 +1,21 @@
+<%= link_to "NewUser?", new_user_path %> <br>
+
+<% if current_user %>
+    <h1>Welcome <%= current_user.name %> </h1>
+    <%= link_to 'LogOut', session_path(current_user), data: {turbo_method: :delete} %> <br>
+<%else %>
+    <%= link_to 'LogIn', new_session_path%> <br>
+<%end%>
+
+<p>Available Users</p>
+
+<ul>
+<% @users.each do|user| %>
+
+<li> <%= user.name %> </li>
+
+<% end %>
+
+</ul>
+
+<%= button_to "Expense Record", expenses_path, method: :get%>

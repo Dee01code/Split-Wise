@@ -1,0 +1,18 @@
+<h1>User Session Login Form</h1>
+
+<%= form_with model: @user, url: sessions_path do|session| %>
+    <div> 
+        <%= session.label :name, "Enter your UserName:" %>
+        <%= session.text_field :name %>
+    </div>
+
+    <div> 
+        <%= session.label :password, "Choose your password:" %>
+        <%= session.password_field :password %>
+    </div>
+
+    <div> 
+        <%= session.submit "LogIn"%>
+    </div>
+
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_063213) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_061605) do
   create_table "expenses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "amount", precision: 10
     t.string "description"
@@ -32,6 +32,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_063213) do
     t.string "mobile_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "password_Confirmation"
   end
 
 end
