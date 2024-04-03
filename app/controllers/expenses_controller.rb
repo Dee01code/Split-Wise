@@ -1,9 +1,9 @@
 class ExpensesController < ApplicationController
   # before_action :popup_display,only: [:create]
   #before_action :set_expense, only: [:show, :edit, :update, :destroy]
-  before_action :third_filter
-  before_action :first_filter, except: [:create]
-  before_action :second_filter, only: [:new, :create, :index]
+  # before_action :third_filter
+  # before_action :first_filter, except: [:create]
+  # before_action :second_filter, only: [:new, :create, :index]
 
   # GET /expenses
   # GET /expenses.json
@@ -18,6 +18,7 @@ class ExpensesController < ApplicationController
   def create
     # binding.break
     @expense = Expense.new(expense_params)
+    @expense.paid_by = current_user.id
     if @expense.save
 
       split_ids = []

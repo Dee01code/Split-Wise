@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    # binding.break
     @users = User.all 
   end
 

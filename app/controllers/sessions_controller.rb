@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user, only: [:new, :create]
     def new
-      if current_user.present? 
-				redirect_to root_path
-			end
+      # if current_user.present? 
+			# 	redirect_to root_path
+			# end
       @user = User.new
     end
   

@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_061605) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_03_121811) do
   create_table "expenses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "amount", precision: 10
     t.string "description"
     t.string "expense_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "paid_by"
   end
 
   create_table "expenses_users", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
