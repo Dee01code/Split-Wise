@@ -1,4 +1,4 @@
-<h1>Expenses#new</h1>
+<h1><%= current_user.name %> Add your Expense</h1>
 <p>Find me in app/views/expenses/new.html.erb</p>
 
 
@@ -12,8 +12,9 @@
 	<%= expense_form.label :amount, "Enter Amount" %>
 	<%= expense_form.text_field :amount%>
 </div>
+ 
 
-
+<!--
 
 <div> 
 	<h4> Distribution Type </h4>
@@ -28,10 +29,21 @@
 
 <div>
   <h4>Split Among:</h4>
+  <% User.order(:name).each do |user| %>
+    <%= label_tag "expense_form[user_#{user.id}]", user.name %>
+    <%= text_field_tag "expense_form[user_#{user.id}]" %><br>
+  <% end %>
+</div>
+
+-->
+
+<div>
+  <h4>Split Among:</h4>
   <%= expense_form.collection_check_boxes :user_ids, User.order(:name), :id, :name do |b| %>
     <%= b.check_box + b.label %><br>
   <% end %>
 </div>
+
 
 
 <div>

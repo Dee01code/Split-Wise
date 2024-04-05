@@ -25,6 +25,15 @@
 			<%= @expense.expense_type %>
 		</td>
 	</tr>
+
+	<tr>
+		<td>
+			Bill Paid By:
+		</td>
+		<td>
+			<%= @payer_name %>
+		</td>
+	</tr>
 	
 	<tr>
 		<td>
@@ -33,10 +42,26 @@
 		<td>
 			<ol>
 				<% @expense.users.each do |user| %>
-          <li>
-            <%= user.name%>
-          </li>
-        <% end %>
+
+						<% unless user.id.equal?@payer_id %>
+
+							<% if current_user.id == user.id %>
+								<li>
+									<%= "You -> #{@payer_name} : #{@transactions.where(receiver: user.id).pluck(:amount)}" %>
+								</li>
+							<%elsif current_user.id == @payer_id%>
+								<li>
+									<%= "#{user.name} -> You : #{@transactions.where(receiver: user.id).pluck(:amount)}" %>
+								</li>
+							<%else%>
+								<li>
+									<%= "#{user.name} -> #{@payer_name} : #{@transactions.where(receiver: user.id).pluck(:amount)}" %>
+								</li>
+							<%end%>
+
+            <%end%>
+
+				<% end %>
 			</ol>
 		</td>
 	</tr>

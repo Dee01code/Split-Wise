@@ -1,4 +1,8 @@
-<h1>User Session Login Form</h1>
+<%= link_to "NewUser?", new_user_path, method: :post%>
+
+
+<h3>User Session Login Form</h3>
+
 
 <%= form_with model: @user, url: sessions_path do|session| %>
     <div> 

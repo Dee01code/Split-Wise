@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_03_121811) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_04_192707) do
   create_table "expenses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.decimal "amount", precision: 10
     t.string "description"
@@ -27,6 +27,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_121811) do
     t.index ["user_id"], name: "index_expenses_users_on_user_id"
   end
 
+  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "sender"
+    t.integer "receiver"
+    t.float "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "expense_id", null: false
+    t.index ["expense_id"], name: "index_transactions_on_expense_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -37,4 +47,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_03_121811) do
     t.string "password_Confirmation"
   end
 
+  add_foreign_key "transactions", "expenses"
 end

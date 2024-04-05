@@ -1,9 +1,9 @@
 <%= link_to "Home Page", root_path%>
 <%= button_to "LogOut", session_path(current_user), method: :delete %>
-<h1>Welcome to DS SplitWise</h1>
+<h2><%= "Hey #{current_user.name}! Welcome to DS SplitWise" %></h2>
 <%= button_to "Add Expense", new_expense_path, method: :get %>
 
-
+<h2>Expense Record</h2>
 <ul>
     <% @expenses.each do |expense| %>
         <li><%= link_to expense.description, expense_path(expense) %></li>
@@ -12,3 +12,25 @@
 </ul>
 
 
+<h3> Balance Calculation: </h3>
+
+<ul> 
+    <% @result.each do|name, amount| %>
+    
+        <% if amount < 0 %>
+            <li>
+            	<%= "You owe #{name} -> #{-amount}"%>
+						</li>
+        <%elsif amount > 0%>
+						<li>
+            	<%= "#{name} owe you -> #{amount}"%>
+						</li>
+        <%else%>
+						<li>
+            	<%= "You have <No Balance> with #{name}"%>
+						</li>
+        <%end%>
+    
+    <%end%>
+</ul>
+    

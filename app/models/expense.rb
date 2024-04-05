@@ -1,9 +1,9 @@
 class Expense < ApplicationRecord
     has_and_belongs_to_many :users
+    has_many :transactions, dependent: :destroy
     validates :amount, presence: true, numericality: true
     validates :description, uniqueness: {scope: :amount}
     validate :validate_validates
-
     before_save :check_zero_amount
 
   private
