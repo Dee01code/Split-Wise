@@ -11,3 +11,20 @@
 #   policy.fullscreen  :self
 #   policy.payment     :self, "https://secure.example.com"
 # end
+
+PERMISSIONS = {
+  admin: {
+    manage_expenses: true,
+    delete_expense: true,
+    update_expense: true,
+    read_expenses: true,
+    create_expense: true
+  },
+  user: {
+    manage_expenses: false,
+    delete_expense: false,
+    update_expense: true,
+    read_expenses: true,
+    create_expense: true
+  }
+}

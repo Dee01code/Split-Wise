@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
       # if current_user.present? 
 			# 	redirect_to root_path
 			# end
+      redirect_to users_path if current_user
       @user = User.new
     end
   

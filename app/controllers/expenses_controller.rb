@@ -1,4 +1,6 @@
 class ExpensesController < ApplicationController
+  before_action :set_expense, only: [:show, :update, :destroy]
+  before_action :authorize_user, only: [:create, :update, :destroy]
   # before_action :popup_display,only: [:create]
   #before_action :set_expense, only: [:show, :edit, :update, :destroy]
   # before_action :third_filter
@@ -7,7 +9,6 @@ class ExpensesController < ApplicationController
 
   # GET /expenses
   # GET /expenses.json
-  
   def new
     @expense = Expense.new
     # @users = User.all
