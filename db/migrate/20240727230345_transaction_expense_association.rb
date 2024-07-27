@@ -1,4 +1,4 @@
-class AddReferenceToTransaction < ActiveRecord::Migration[7.1]
+class TransactionExpenseAssociation < ActiveRecord::Migration[7.1]
   def change
     add_reference :transactions, :expense, null: false, foreign_key: true
   end
