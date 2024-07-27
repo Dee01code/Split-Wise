@@ -11,7 +11,8 @@ WORKDIR /rails
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+    BUNDLE_WITHOUT="development" \
+    SECRET_KEY_BASE="2859903923f71c700b56a6cb3f6ac1032752a13c21ae0110d9a59dd7d177c169443ee94c6e27fc5f96f0f15e868918333ee2fa7299fb7a95f579272f98acc324"
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
