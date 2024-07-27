@@ -9,6 +9,7 @@ gem "rails", "~> 7.1.3", ">= 7.1.3.2"
 gem "sprockets-rails"
 
 # Use pgsql as the database for Active Record
+gem "mysql2", "~> 0.5"
 gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -66,4 +67,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'rails-erd', group: :development
+# gem 'rails-erd', group: :development
